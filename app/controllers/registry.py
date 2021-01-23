@@ -57,5 +57,4 @@ def create_licensee(post_data):
         'licenseNumber': post_data["licenseNumber"]
     }
     uli = db.registry.insert_one(item).inserted_id
-    print(uli)
     return uli

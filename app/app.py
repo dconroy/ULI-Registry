@@ -15,7 +15,6 @@ def index():
 def licensee():
     post_data = request.get_json(force=True)
     _licensees = search_licensee(post_data)
-    print(_licensees)
     if _licensees:
         #We've found possible Licensees that match the registered data, return them
         return jsonify(
@@ -32,7 +31,6 @@ def licensee():
 def registerLicensee():
     post_data = request.get_json(force=True)
     _licensees = search_licensee(post_data)
-    print(_licensees)
     if _licensees:
         #We've found possible Licensees that match the registered data, return them
         return jsonify(

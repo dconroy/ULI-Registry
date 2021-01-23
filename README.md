@@ -11,6 +11,7 @@ Welcome to the rough proof of concept of a centralized ULI Service
 
 To run, simply bring up the webserver, web app,  and database with the following command.
 
+    docker-compose build
     docker-compose up -d
 
 You will need to create a database user for the flask app to save data to Mongo
