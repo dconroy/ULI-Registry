@@ -22,7 +22,7 @@ Once inside the container, login to mongo
 
     root@c5a67fc9927b:/# mongo -u mongodbuser -p
 
-You will be prompted for the password that you entered as the value for the MONGO_INITDB_ROOT_PASSWORD variable in the docker-compose.yml file. The password can be changed by setting a new value for the MONGO_INITDB_ROOT_PASSWORD in the mongodb service, in which case you will have to re-run the docker-compose up -d command.
+You will be prompted for the password that you entered as the value for the MONGO_INITDB_ROOT_PASSWORD variable in the docker-compose.yml file. In this demo we used `your_mongodb_root_password`. The password can be changed by setting a new value for the MONGO_INITDB_ROOT_PASSWORD in the mongodb service, in which case you will have to re-run the docker-compose up -d command.
 
 Run the show dbs; command to list all databases:
 
