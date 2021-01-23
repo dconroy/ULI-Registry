@@ -2,12 +2,17 @@ import os
 import settings
 from flask import Flask, request, jsonify
 from flask_pymongo import PyMongo
+from controllers.registry import search_licensee
 
 application = Flask(__name__)
 application.config["MONGO_URI"] = 'mongodb://' + os.environ['MONGODB_USERNAME'] + ':' + os.environ['MONGODB_PASSWORD'] + '@' + os.environ['MONGODB_HOSTNAME'] + ':27017/' + os.environ['MONGODB_DATABASE']
 
 mongo = PyMongo(application)
 db = mongo.db
+
+def hide_email(email):
+    m = email.split('@')
+    return f'{m[0][0]}{"*"*(len(m[0])-2)}{m[0][-1] if len(m[0]) > 1 else ""}@{m[1]}'
 
 @application.route('/')
 def index():
@@ -30,9 +35,28 @@ def licensee():
         possible_matches += 1
         item = {
              'id': str(licensee['_id']),
-             'email': licensee['email']
+             'email': hide_email(licensee['email']),
+             'firstname': licensee['firstname'],
+             'lastname': licensee['lastname'],
+             'nrds': licensee['nrds']
          }
         data.append(item)
+
+    if possible_matches == 0:
+        _licensees = db.registry.find({"$and": [{"firstname": post_data["firstname"]}, 
+                                                {"lastname": post_data["lastname"]}]})
+        for licensee in _licensees:
+            possible_matches += 1
+            item = {
+            'uid': str(licensee['_id']),
+            'email': hide_email(licensee['email']),
+            'firstname': licensee['firstname'],
+            'lastname': licensee['lastname'],
+            'licenseNumber': licensee['licenseNumber'],
+            'nrds': licensee['nrds']
+            }
+            data.append(item)
+
     
     data.append({"Possible Matches:" : possible_matches})
     return jsonify(
