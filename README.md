@@ -158,7 +158,7 @@ Sample POST to http://localhost/query
 ## Outstanding Questions
 
 1) Is mongo the right technology for this?
-2) Can the matching be improved?
+2) Can the matching be improved? Right now only doing email, or combination of first and last name
 3) How do we avoid leaking data?
    1) Do we need to obsfucate license numbers? 
    2) NRDS?
