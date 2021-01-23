@@ -158,7 +158,7 @@ Sample POST to http://localhost/query
 ## Outstanding Questions
 
 1) Is mongo the right technology for this? Will it scale to millions of users?
-2) Can the matching be improved? Right now only doing email, or combination of first and last name? How can we ensure millisecond response time on multiple searches on a NOSQL collection? Elastic Search?
+2) Can the matching be improved? Right now only doing email, or combination of first and last name. How can we ensure millisecond response time on multiple search types on a NOSQL collection? Elastic Search?
 3) Do I need to nest the license information like the DID spec?
 4) How do we avoid leaking data?
    1) Do we need to obsfucate license numbers? 
