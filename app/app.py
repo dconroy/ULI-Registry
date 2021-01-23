@@ -44,13 +44,12 @@ def registerLicensee():
         data = create_licensee(post_data)
         return jsonify(
             status=True,
-            ULI=str(data),
+            uli=str(data),
             message='ULI saved successfully!'
         ), 201
 
     return jsonify(
             status=True,
-            ULI=str(data),
             message='Unexpected Error!'
         ), 500
     

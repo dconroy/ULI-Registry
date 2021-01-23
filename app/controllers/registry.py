@@ -1,10 +1,10 @@
 import json
 from controllers.mongo import db, request
+from controllers.utils import hide_email
 
 def search_licensee(post_data):
     item = {}
     data = []
-   
     possible_matches = 0
 
     if post_data["email"] is not None:
@@ -13,7 +13,7 @@ def search_licensee(post_data):
     for licensee in _licensees:
         possible_matches += 1
         item = {
-             'id': str(licensee['_id']),
+             'uli': str(licensee['_id']),
              'email': hide_email(licensee['email']),
              'firstname': licensee['firstname'],
              'lastname': licensee['lastname'],
@@ -28,7 +28,7 @@ def search_licensee(post_data):
         for licensee in _licensees:
             possible_matches += 1
             item = {
-            'uid': str(licensee['_id']),
+            'uli': str(licensee['_id']),
             'email': hide_email(licensee['email']),
             'firstname': licensee['firstname'],
             'lastname': licensee['lastname'],
@@ -37,16 +37,12 @@ def search_licensee(post_data):
             }
             data.append(item)
 
-    
     data.append({"possible_matches:" : possible_matches})
+
     if possible_matches == 0:
         return None
     else:
         return data
-
-def hide_email(email):
-    m = email.split('@')
-    return f'{m[0][0]}{"*"*(len(m[0])-2)}{m[0][-1] if len(m[0]) > 1 else ""}@{m[1]}'
 
 def create_licensee(post_data):
     item = {
