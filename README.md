@@ -14,44 +14,6 @@ To run, simply bring up the webserver, web app,  and database with the following
     docker-compose build
     docker-compose up -d
 
-You will need to create a database user for the flask app to save data to Mongo
-
-    $ docker exec -it mongodb bash
-
-Once inside the container, login to mongo
-
-    root@c5a67fc9927b:/# mongo -u mongodbuser -p
-
-You will be prompted for the password that you entered as the value for the MONGO_INITDB_ROOT_PASSWORD variable in the docker-compose.yml file. In this demo we used `your_mongodb_root_password`. The password can be changed by setting a new value for the MONGO_INITDB_ROOT_PASSWORD in the mongodb service, in which case you will have to re-run the docker-compose up -d command.
-
-Run the show dbs; command to list all databases:
-
-    mongodb> show dbs;
-
-You should see:
-
-    Output
-    admin    0.000GB
-    config   0.000GB
-    local    0.000GB
-    5 rows in set (0.00 sec)
-
-
-The admin database is a special database that grants administrative permissions to users. If a user has read access to the admin database, they will have read and write permissions to all other databases. Since the output lists the admin database, the user has access to this database and can therefore read and write to all other databases.
-
-Saving the first licensee will automatically create the MongoDB database. MongoDB also allows you to switch to a database that does not exist using the use database command. It creates a database when a document is saved to a collection. Therefore the database is not created here; that will happen when you save your first licensee in the database from the API. Execute the use command to switch to the flaskdb database:
-
-    mongdob> use flaskdb
-
-Next, create a new user that will be allowed to access this database:
-
-    mongdob> db.createUser({user: 'flaskuser', pwd: 'your_mongodb_password', roles: [{role: 'readWrite', db: 'flaskdb'}]})
-    mongodb> exit
-
-This command creates a user named flaskuser with readWrite access to the flaskdb database. Be sure to use a secure password in the pwd field. The user and pwd here are the values you defined in the docker-compose.yml file under the environment variables section for the flask service.
-
-
-
 # Registering a User
 To register a user
 
