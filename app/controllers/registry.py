@@ -7,6 +7,23 @@ def search_licensee(post_data):
     data = []
     possible_matches = 0
 
+    if post_data["nrds"] is not None:
+        _licensees = db.registry.find({ 'nrds': post_data["nrds"] })
+    
+    for licensee in _licensees:
+        possible_matches += 1
+        item = {
+
+            ##what else do we return? 
+             'uli': str(licensee['_id']),
+             'email': hide_email(licensee['email']),
+             'firstname': licensee['firstname'],
+             'lastname': licensee['lastname'],
+             'licenseNumber': licensee['licenseNumber'],
+             'nrds': licensee['nrds']
+         }
+        data.append(item)
+
     if post_data["email"] is not None:
         _licensees = db.registry.find({ 'email': post_data["email"] })
 
