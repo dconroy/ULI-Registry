@@ -19,11 +19,24 @@ To register a user
 
     POST http://localhost/register 
     {
-        "nrds": "08400162342349", 
-        "licenseNumber": "12354",
-        "email": "dconroy1234@gmail.com",
-        "firstname" : "David",
-        "lastname" : "Conroy"
+    "nrds": "084001677",
+    "email": "dconroy1234567@gmail.com",
+    "firstname": "David",
+    "lastname": "Conroy",
+    "license_data": [
+        {
+        "Agency": "NY",
+        "Number": "123456"
+        },
+        {
+        "Agency": "MA",
+        "Number": "78910"
+        },
+        {
+        "Agency": "NH",
+        "Number": "654321"
+        }
+    ]
     }
 
 ## Sample Return - No Match Found, New User Created
@@ -37,23 +50,28 @@ To register a user
     {
         "data": [
             {
-                "email": "d*********4@gmail.com",
-                "firstname": "Dave",
-                "id": "600b47f1904fc2120998cf9c",
+                "email": "d************7@gmail.com",
+                "firstname": "David",
                 "lastname": "Conroy",
-                "licenseNumber": "1234",
-                "nrds": "084001679"
+                "license_data": [
+                    {
+                        "Agency": "NY",
+                        "Number": "123456"
+                    },
+                    {
+                        "Agency": "MA",
+                        "Number": "78910"
+                    },
+                    {
+                        "Agency": "NH",
+                        "Number": "654321"
+                    }
+                ],
+                "nrds": "084001679",
+                "uli": "600f4b44c42d6472286a5931"
             },
             {
-                "email": "d*********4@gmail.com",
-                "firstname": "Dave",
-                "id": "600b72d51a9c4dd089e27978",
-                "lastname": "Conroy",
-                "licenseNumber": "12354",
-                "nrds": "08400162342349"
-            },
-            {
-                "possible_matches:": 2
+                "possible_matches:": 1
             }
         ],
         "message": "ULI May Exist!",
@@ -74,12 +92,25 @@ Sample POST to http://localhost/query
     {
         "data": [
             {
-                "email": "d*****y@gmail.com",
-                "firstname": "Dave",
+                "email": "d************7@gmail.com",
+                "firstname": "David",
                 "lastname": "Conroy",
-                "licenseNumber": "1234",
+                "license_data": [
+                    {
+                        "Agency": "NY",
+                        "Number": "123456"
+                    },
+                    {
+                        "Agency": "MA",
+                        "Number": "78910"
+                    },
+                    {
+                        "Agency": "NH",
+                        "Number": "654321"
+                    }
+                ],
                 "nrds": "084001679",
-                "uid": "600b47ad904fc2120998cf9b"
+                "uli": "600f4b44c42d6472286a5931"
             },
             {
                 "possible_matches:": 1
@@ -90,32 +121,7 @@ Sample POST to http://localhost/query
     }
 
 ## Sample Return - Multiple Matches Found
-    {
-        "data": [
-            {
-                "email": "d*****y@gmail.com",
-                "firstname": "Dave",
-                "lastname": "Conroy",
-                "licenseNumber": "1234",
-                "nrds": "084001679",
-                "uid": "600b47ad904fc2120998cf9b"
-            },
-            {
-                "email": "d*********4@gmail.com",
-                "firstname": "Dave",
-                "lastname": "Conroy",
-                "licenseNumber": "12354",
-                "nrds": "08400162342349",
-                "uid": "600b72d51a9c4dd089e27978"
-            },
-            {
-                "possible_matches:": 2
-            }
-        ],
-        "message": "ULI May Exist!",
-        "status": true
-    }
-
+TBC
 
 ## Outstanding Questions
 

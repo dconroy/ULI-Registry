@@ -7,54 +7,22 @@ def search_licensee(post_data):
     data = []
     possible_matches = 0
 
-    if post_data["nrds"] is not None:
-        _licensees = db.registry.find({ 'nrds': post_data["nrds"] })
-    
-    for licensee in _licensees:
-        possible_matches += 1
-        item = {
-
-            ##what else do we return? 
-             'uli': str(licensee['_id']),
-             'email': hide_email(licensee['email']),
-             'firstname': licensee['firstname'],
-             'lastname': licensee['lastname'],
-             'licenseNumber': licensee['licenseNumber'],
-             'nrds': licensee['nrds']
-         }
-        data.append(item)
-
-    if post_data["email"] is not None:
-        _licensees = db.registry.find({ 'email': post_data["email"] })
-
-    for licensee in _licensees:
-        possible_matches += 1
-        item = {
-             'uli': str(licensee['_id']),
-             'email': hide_email(licensee['email']),
-             'firstname': licensee['firstname'],
-             'lastname': licensee['lastname'],
-             'licenseNumber': licensee['licenseNumber'],
-             'nrds': licensee['nrds']
-         }
-        data.append(item)
-
-    if possible_matches == 0:
-        _licensees = db.registry.find({"$and": [{"firstname": post_data["firstname"]}, 
-                                                {"lastname": post_data["lastname"]}]})
+    if post_data['nrds'] is not None:
+        _licensees = db.registry.find({ 'nrds': post_data['nrds'] })
         for licensee in _licensees:
-            possible_matches += 1
-            item = {
-            'uli': str(licensee['_id']),
-            'email': hide_email(licensee['email']),
-            'firstname': licensee['firstname'],
-            'lastname': licensee['lastname'],
-            'licenseNumber': licensee['licenseNumber'],
-            'nrds': licensee['nrds']
-            }
-            data.append(item)
+            if(post_data['firstname'] == licensee['firstname'] and post_data['lastname'] == licensee['lastname']):
+                possible_matches += 1
+                item = {
+                'uli': str(licensee['_id']),
+                'email': hide_email(licensee['email']),
+                'firstname': licensee['firstname'],
+                'lastname': licensee['lastname'],
+                'license_data': licensee['license_data'],
+                'nrds': licensee['nrds']
+                }
+                data.append(item)
 
-    data.append({"possible_matches:" : possible_matches})
+    data.append({'possible_matches:' : possible_matches})
 
     if possible_matches == 0:
         return None
@@ -63,11 +31,11 @@ def search_licensee(post_data):
 
 def create_licensee(post_data):
     item = {
-        'nrds': post_data["nrds"],
-        'firstname': post_data["firstname"],
-        'lastname': post_data["lastname"],
-        'email': post_data["email"],
-        'licenseNumber': post_data["licenseNumber"]
+        'nrds': post_data['nrds'],
+        'firstname': post_data['firstname'],
+        'lastname': post_data['lastname'],
+        'email': post_data['email'],
+        'license_data': post_data['license_data']
     }
     uli = db.registry.insert_one(item).inserted_id
     return uli
