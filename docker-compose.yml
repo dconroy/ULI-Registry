@@ -37,7 +37,9 @@ services:
       MONDODB_LOG_DIR: /dev/null
     volumes:
       - mongodbdata:/data/db
-      - ./mongo/create-user.js:/docker-entrypoint-initdb.d/create-user.js:ro
+      - ./mongo-seed:/docker-entrypoint-initdb.d/
+#      - ./mongo/create-mongo-user.js:/docker-entrypoint-initdb.d/create-mongo-user.js:ro
+#      - ./mongo/insert-ULI-data.js:/docker-entrypoint-initdb.d/insert-ULI-data.js:ro
     ports:
       - "27017:27017"
     networks:
