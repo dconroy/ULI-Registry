@@ -19,26 +19,33 @@ To register a user
 
     POST http://localhost/register 
     {
-    "nrds": "084001677",
+    "nrds": "084001679",
     "email": "dconroy1234567@gmail.com",
     "firstname": "David",
     "lastname": "Conroy",
     "license_data": [
         {
-        "Agency": "NY",
-        "Number": "123456"
+        "agency": "NY",
+        "number": "123456",
+        "type": "Broker"
         },
         {
-        "Agency": "MA",
-        "Number": "78910"
+        "agency": "NY",
+        "number": "a12356",
+        "type": "Appraiseral"
         },
         {
-        "Agency": "NH",
-        "Number": "654321"
+        "agency": "MA",
+        "number": "78910",
+        "type": "Salesperson"
+        },
+        {
+        "agency": "NH",
+        "number": "654321",
+        "type": "Salesperson"
         }
     ]
     }
-
 ## Sample Return - No Match Found, New User Created
     {
         "ULI": "600c5b0d762ace88ef66f2ca",
