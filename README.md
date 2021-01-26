@@ -20,25 +20,32 @@ To register a user
     POST http://localhost/register 
     {
     "nrds": "084001677",
-    "email": "dconroy1234567@gmail.com",
+    "email": "dconroy@gmail.com",
     "firstname": "David",
     "lastname": "Conroy",
     "license_data": [
         {
-        "Agency": "NY",
-        "Number": "123456"
+        "agency": "NY",
+        "number": "1234586",
+        "type": "Broker"
         },
         {
-        "Agency": "MA",
-        "Number": "78910"
+        "agency": "NY",
+        "number": "a12356",
+        "type": "Appraisal"
         },
         {
-        "Agency": "NH",
-        "Number": "654321"
+        "agency": "MA",
+        "number": "78910",
+        "type": "Salesperson"
+        },
+        {
+        "agency": "NH",
+        "number": "654321",
+        "type": "Salesperson"
         }
     ]
     }
-
 ## Sample Return - No Match Found, New User Created
     {
         "ULI": "600c5b0d762ace88ef66f2ca",
@@ -50,25 +57,33 @@ To register a user
     {
         "data": [
             {
-                "email": "d************7@gmail.com",
+                "email": "d*****y@gmail.com",
                 "firstname": "David",
                 "lastname": "Conroy",
                 "license_data": [
                     {
-                        "Agency": "NY",
-                        "Number": "123456"
+                        "agency": "NY",
+                        "number": "1234586",
+                        "type": "Broker"
                     },
                     {
-                        "Agency": "MA",
-                        "Number": "78910"
+                        "agency": "NY",
+                        "number": "a12356ddd",
+                        "type": "Appraisal"
                     },
                     {
-                        "Agency": "NH",
-                        "Number": "654321"
+                        "agency": "MA",
+                        "number": "78910",
+                        "type": "Salesperson"
+                    },
+                    {
+                        "agency": "NH",
+                        "number": "654321",
+                        "type": "Salesperson"
                     }
                 ],
-                "nrds": "084001679",
-                "uli": "600f4b44c42d6472286a5931"
+                "nrds": "084001677",
+                "uli": "601032f9bd167f2a38b080bc"
             },
             {
                 "possible_matches:": 1
@@ -89,36 +104,44 @@ Sample POST to http://localhost/query
         "lastname" : "Conroy"
     }
 ## Sample Return - Single Match Found
-    {
-        "data": [
-            {
-                "email": "d************7@gmail.com",
-                "firstname": "David",
-                "lastname": "Conroy",
-                "license_data": [
-                    {
-                        "Agency": "NY",
-                        "Number": "123456"
-                    },
-                    {
-                        "Agency": "MA",
-                        "Number": "78910"
-                    },
-                    {
-                        "Agency": "NH",
-                        "Number": "654321"
-                    }
-                ],
-                "nrds": "084001679",
-                "uli": "600f4b44c42d6472286a5931"
-            },
-            {
-                "possible_matches:": 1
-            }
-        ],
-        "message": "ULI May Exist!",
-        "status": true
-    }
+{
+    "data": [
+        {
+            "email": "d*****y@gmail.com",
+            "firstname": "David",
+            "lastname": "Conroy",
+            "license_data": [
+                {
+                    "agency": "NY",
+                    "number": "1234586",
+                    "type": "Broker"
+                },
+                {
+                    "agency": "NY",
+                    "number": "a12356ddd",
+                    "type": "Appraiseral"
+                },
+                {
+                    "agency": "MA",
+                    "number": "78910",
+                    "type": "Salesperson"
+                },
+                {
+                    "agency": "NH",
+                    "number": "654321",
+                    "type": "Salesperson"
+                }
+            ],
+            "nrds": "084001677",
+            "uli": "601032f9bd167f2a38b080bc"
+        },
+        {
+            "possible_matches:": 1
+        }
+    ],
+    "message": "ULI May Exist!",
+    "status": true
+}
 
 ## Sample Return - Multiple Matches Found
 TBC

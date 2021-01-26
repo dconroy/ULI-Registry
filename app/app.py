@@ -24,7 +24,7 @@ def licensee():
         ), 201
     return jsonify(
         status=True,
-        data=data
+         message='ULI Not Found!'
     )
 
 @application.route('/register', methods=['POST'])
