@@ -38,8 +38,6 @@ services:
     volumes:
       - mongodbdata:/data/db
       - ./mongo-seed:/docker-entrypoint-initdb.d/
-#      - ./mongo/create-mongo-user.js:/docker-entrypoint-initdb.d/create-mongo-user.js:ro
-#      - ./mongo/insert-ULI-data.js:/docker-entrypoint-initdb.d/insert-ULI-data.js:ro
     ports:
       - "27017:27017"
     networks:
