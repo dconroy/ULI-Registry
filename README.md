@@ -104,44 +104,44 @@ Sample POST to http://localhost/query
         "lastname" : "Conroy"
     }
 ## Sample Return - Single Match Found
-{
-    "data": [
-        {
-            "email": "d*****y@gmail.com",
-            "firstname": "David",
-            "lastname": "Conroy",
-            "license_data": [
-                {
-                    "agency": "NY",
-                    "number": "1234586",
-                    "type": "Broker"
-                },
-                {
-                    "agency": "NY",
-                    "number": "a12356ddd",
-                    "type": "Appraiseral"
-                },
-                {
-                    "agency": "MA",
-                    "number": "78910",
-                    "type": "Salesperson"
-                },
-                {
-                    "agency": "NH",
-                    "number": "654321",
-                    "type": "Salesperson"
-                }
-            ],
-            "nrds": "084001677",
-            "uli": "601032f9bd167f2a38b080bc"
-        },
-        {
-            "possible_matches:": 1
-        }
-    ],
-    "message": "ULI May Exist!",
-    "status": true
-}
+    {
+        "data": [
+            {
+                "email": "d*****y@gmail.com",
+                "firstname": "David",
+                "lastname": "Conroy",
+                "license_data": [
+                    {
+                        "agency": "NY",
+                        "number": "1234586",
+                        "type": "Broker"
+                    },
+                    {
+                        "agency": "NY",
+                        "number": "a12356ddd",
+                        "type": "Appraiseral"
+                    },
+                    {
+                        "agency": "MA",
+                        "number": "78910",
+                        "type": "Salesperson"
+                    },
+                    {
+                        "agency": "NH",
+                        "number": "654321",
+                        "type": "Salesperson"
+                    }
+                ],
+                "nrds": "084001677",
+                "uli": "601032f9bd167f2a38b080bc"
+            },
+            {
+                "possible_matches:": 1
+            }
+        ],
+        "message": "ULI May Exist!",
+        "status": true
+    }
 
 ## Sample Return - Multiple Matches Found
 TBC
