@@ -1,6 +1,6 @@
 
 
-def format_item(licensee):
+def format_uli(licensee):
     item = {}
     item = {
         "uli": str(licensee["_id"]),
