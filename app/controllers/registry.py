@@ -3,8 +3,8 @@ from controllers.mongo import db, request
 from controllers.utils import hide_email, ordered, format_uli
 
 def match_licenses(licensees, licenses_to_check):
-    for licensee in licensees: #for each licensee with the same first/last name
-        for individual_license in licenses_to_check: # and every license type provided in the search
+    for licensee in licensees: #for each licensee 
+        for individual_license in licenses_to_check: # and every license provided in the search
             for license_held in licensee["license_data"]:
                 if(ordered(individual_license) == ordered(license_held)): #order the json to make sure you get exact matches
                     return licensee
