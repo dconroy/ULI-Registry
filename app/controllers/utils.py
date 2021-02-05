@@ -4,16 +4,16 @@ def format_uli(licensee):
     item = {}
     item = {
         "uli": str(licensee["_id"]),
-        "email": hide_email(licensee["email"]),
-        "firstname": licensee["firstname"],
-        "lastname": licensee["lastname"],
+        "MemberEmail": hide_MemberEmail(licensee["MemberEmail"]),
+        "MemberFirstName": licensee["MemberFirstName"],
+        "MemberLastName": licensee["MemberLastName"],
         "license_data": licensee["license_data"],
-        "nrds": licensee["nrds"]
+        "MemberNationalAssociationId": licensee["MemberNationalAssociationId"]
     }
     return item
 
-def hide_email(email):
-    m = email.split('@')
+def hide_MemberEmail(MemberEmail):
+    m = MemberEmail.split('@')
     return f'{m[0][0]}{"*"*(len(m[0])-2)}{m[0][-1] if len(m[0]) > 1 else ""}@{m[1]}'
 
 

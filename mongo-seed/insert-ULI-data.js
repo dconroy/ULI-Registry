@@ -1,10 +1,10 @@
 db.registry.insert(
       [
         {
-          "nrds": "084001678",
-          "email": "amanning@era.com",
-          "firstname": "Andrea",
-          "lastname": "Manning",
+          "MemberNationalAssociationId": "084001678",
+          "MemberEmail": "amanning@era.com",
+          "MemberFirstName": "Andrea",
+          "MemberLastName": "Manning",
           "license_data": [
               {
               "agency": "NY",
@@ -33,10 +33,10 @@ db.registry.insert(
 db.registry.insert(
     [
       {
-        "nrds": "120843873",
-        "email": "jclarkson@remax.net",
-        "firstname": "Joseph",
-        "lastname": "Clarkson",
+        "MemberNationalAssociationId": "120843873",
+        "MemberEmail": "jclarkson@remax.net",
+        "MemberFirstName": "Joseph",
+        "MemberLastName": "Clarkson",
         "license_data": [
             {
             "agency": "NY",
@@ -65,10 +65,10 @@ db.registry.insert(
  db.registry.insert(
   [
     {
-      "nrds": "379414468",
-      "email": "zmorgan@remax.com",
-      "firstname": "Zoe",
-      "lastname": "Morgan",
+      "MemberNationalAssociationId": "379414468",
+      "MemberEmail": "zmorgan@remax.com",
+      "MemberFirstName": "Zoe",
+      "MemberLastName": "Morgan",
       "license_data": [
           {
           "agency": "NY",

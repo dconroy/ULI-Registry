@@ -19,10 +19,10 @@ To register a user
 
     POST http://localhost/register 
     {
-    "nrds": "084001677",
-    "email": "dconroy@gmail.com",
-    "firstname": "David",
-    "lastname": "Conroy",
+    "MemberNationalAssociationId": "084001677",
+    "MemberEmail": "dconroy@gmail.com",
+    "MemberFirstName": "David",
+    "MemberLastName": "Conroy",
     "license_data": [
         {
         "agency": "NY",
@@ -57,9 +57,9 @@ To register a user
     {
         "data": [
             {
-                "email": "d*****y@gmail.com",
-                "firstname": "David",
-                "lastname": "Conroy",
+                "MemberEmail": "d*****y@gmail.com",
+                "MemberFirstName": "David",
+                "MemberLastName": "Conroy",
                 "license_data": [
                     {
                         "agency": "NY",
@@ -82,7 +82,7 @@ To register a user
                         "type": "Salesperson"
                     }
                 ],
-                "nrds": "084001677",
+                "MemberNationalAssociationId": "084001677",
                 "uli": "601032f9bd167f2a38b080bc"
             },
             {
@@ -97,19 +97,19 @@ To register a user
 Sample POST to http://localhost/query
 
     {
-        "nrds": "08400162342349", 
+        "MemberNationalAssociationId": "08400162342349", 
         "licenseNumber": "12354",
-        "email": "dconroy1234@gmail.com",
-        "firstname" : "David",
-        "lastname" : "Conroy"
+        "MemberEmail": "dconroy1234@gmail.com",
+        "MemberFirstName" : "David",
+        "MemberLastName" : "Conroy"
     }
 ## Sample Return - Single Match Found
     {
         "data": [
             {
-                "email": "d*****y@gmail.com",
-                "firstname": "David",
-                "lastname": "Conroy",
+                "MemberEmail": "d*****y@gmail.com",
+                "MemberFirstName": "David",
+                "MemberLastName": "Conroy",
                 "license_data": [
                     {
                         "agency": "NY",
@@ -132,7 +132,7 @@ Sample POST to http://localhost/query
                         "type": "Salesperson"
                     }
                 ],
-                "nrds": "084001677",
+                "MemberNationalAssociationId": "084001677",
                 "uli": "601032f9bd167f2a38b080bc"
             },
             {
@@ -149,10 +149,10 @@ TBC
 ## Outstanding Questions
 
 1) Is mongo the right technology for this? Will it scale to millions of users?
-2) Can the matching be improved? Right now only doing email, or combination of first and last name. How can we ensure millisecond response time on multiple search types on a NOSQL collection? Elastic Search?
+2) Can the matching be improved? Right now only doing MemberEmail, or combination of first and last name. How can we ensure millisecond response time on multiple search types on a NOSQL collection? Elastic Search?
 3) Do I need to nest the license information like the DID spec?
 4) How do we avoid leaking data?
    1) Do we need to obsfucate license numbers? 
-   2) NRDS?
+   2) MemberNationalAssociationId?
    3) Names?
 5) Do we need to deploy this?
