@@ -55,6 +55,7 @@ services:
       APP_NAME: "webserver"
       APP_DEBUG: "true"
       SERVICE_NAME: "webserver"
+      PYTHONUNBUFFERED: 1
     ports:
       - "80:80"
       - "443:443"

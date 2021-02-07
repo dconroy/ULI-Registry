@@ -1,15 +1,19 @@
-FROM python:3.6.8-alpine3.9
+FROM python:3.6.8-alpine3.8
 
-LABEL MAINTAINER="Dave Conroy MemberLastName <dconroy@gmail.com>"
+LABEL MAINTAINER="Dave Conroy <dconroy@gmail.com>"
+LABEL MAINTAINER="Joshua Darnell <josh@kurotek.com>"
 
 ENV GROUP_ID=1000 \
     USER_ID=1000
 
-WORKDIR /var/www/
-
+WORKDIR /var/www
 ADD . /var/www/
-RUN pip install -r requirements.txt
-RUN pip install gunicorn
+RUN apk --update add python py-pip
+RUN apk --update add --virtual build-dependencies libffi-dev openssl-dev python-dev py-pip build-base \
+  && pip install --upgrade pip \
+  && pip install --upgrade -r requirements.txt \
+  && apk del build-dependencies \
+  && pip install gunicorn
 
 RUN addgroup -g $GROUP_ID www
 RUN adduser -D -u $USER_ID -G www www -s /bin/sh
