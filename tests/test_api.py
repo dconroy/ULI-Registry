@@ -34,4 +34,5 @@ def test_query(wait_for_api):
     data = '{"MemberNationalAssociationId": "084001677","MemberEmail": "dconroy@gmail.com","MemberFirstName": "David","MemberLastName": "Conroy"}'
     item = request_session.post('%s/query' % api_url, data = data).json()
     assert item['status'] == True
+    print("ohai")
     #request_session.delete(urljoin(api_url, 'items/2'))
